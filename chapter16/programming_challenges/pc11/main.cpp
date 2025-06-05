@@ -33,6 +33,7 @@ int main()
     myIntVector.displayArray();
     cout << endl;
 
+    // Display the searching result.
     if (result == -1)
         cout << "2590 was not found.\n";
     else
