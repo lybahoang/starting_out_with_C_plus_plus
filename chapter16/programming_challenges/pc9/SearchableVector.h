@@ -37,9 +37,9 @@ SearchableVector<T>::SearchableVector(const SearchableVector &other) : SimpleVec
 template <class T>
 int SearchableVector<T>::findItem(T value)
 {
-    int startingIndex = 0;              // Hold the starting index.
-    int endingIndex = this->arraySize;  // Hold the ending index.
-    int middleIndex = 0;                // Hold the middle index.
+    int startingIndex = 0;                  // Hold the starting index.
+    int endingIndex = this->arraySize - 1;  // Hold the ending index.
+    int middleIndex = 0;                    // Hold the middle index.
 
     // A loop to perform binary search.
     while (startingIndex <= endingIndex)

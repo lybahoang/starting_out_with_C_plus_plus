@@ -22,7 +22,7 @@ public:
 
 // Copy constructor.
 template <class T>
-SearchableVector<T>::SearchableVector(const SearchableVector &other) : SimpleVector<T>(other.getSize())
+SearchableVector<T>::SearchableVector(const SearchableVector &other) : SortableVector<T>(other.getSize())
 {
     // Copy the element of the 'other' object.
     for (int count = 0; count < this->getSize(); count++)
@@ -38,9 +38,9 @@ SearchableVector<T>::SearchableVector(const SearchableVector &other) : SimpleVec
 template <class T>
 int SearchableVector<T>::findItem(T value)
 {
-    int startingIndex = 0;              // Hold the starting index.
-    int endingIndex = this->arraySize;  // Hold the ending index.
-    int middleIndex = 0;                // Hold the middle index.
+    int startingIndex = 0;                  // Hold the starting index.
+    int endingIndex = this->arraySize - 1;  // Hold the ending index.
+    int middleIndex = 0;                    // Hold the middle index.
 
     // A loop to perform binary search.
     while (startingIndex <= endingIndex)
