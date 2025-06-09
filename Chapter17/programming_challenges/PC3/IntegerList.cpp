@@ -36,6 +36,7 @@ IntegerList::IntegerList(const IntegerList &other)
         // Copy all nodes.
         while (otherCurrentNode != nullptr)
         {
+            // Copy the otherCurrentNode.
             newNode = new ListNode;
             newNode->value = otherCurrentNode->value;
             newNode->next = nullptr;

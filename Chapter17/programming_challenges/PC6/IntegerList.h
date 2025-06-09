@@ -21,11 +21,13 @@ public:
     ~IntegerList();
 
     // Linked list operation.
-    void appendNode(const int &value);
-    void insertNode(const int &value, const int &index);
-    void deleteNode(const int &value);
-    void sort();
+    void appendNode(int);
+    void deleteNode(int);
+    void displayList() const;
+    void insertNode(int);
     void reverse();
-    int search(const int &value);
+    int search(int);
+    void insertNodeByPosition(int, int);
+    int countNode() const;
 };
 #endif

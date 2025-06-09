@@ -206,7 +206,7 @@ void IntegerList::deleteNode(int num)
     }
 }
 
-// Operation: InegerList::dipslat
+// Operation: InegerList::dipslay
 void IntegerList::display() const
 {
     ListNode *nodePtr;  // To traverse the list.
@@ -246,6 +246,9 @@ void IntegerList::reverse()
     {
         // Position currentNode to the head of the list.
         currentNode = head;
+
+        // Initialize previousNode to a null pointer.
+        previousNode = nullptr;
 
         // While the currentNode is not at the end of the list.
         while (currentNode != nullptr)
