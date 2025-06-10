@@ -307,13 +307,72 @@ int IntegerList::countNode() const
  */
 void IntegerList::insertNodeByPosition(int value, int position)
 {
-    ListNode *newNode;      // To point to a new node.
-    ListNode *currentNode;  // To traverse the list.
+    ListNode *newNode = new ListNode;      // To point to a new node.
+    ListNode *nodePtr = nullptr;           // To traverse the list.
+    ListNode *previousNode = nullptr;      // To point to the previous node.
 
     // Allocate a new node and store value there.
-    newNode = new ListNode;
     newNode->value = value;
 
     // Get the maximum position in the list.
     int maxPosition = this->countNode();
+
+    // If there are no nodes in the list, then make newNode
+    // the first node.
+    if (head == nullptr)
+    {
+        head = newNode;
+        head->next = nullptr;
+    }
+    // Else if the 'position' is less than 0 or equal to 0,
+    // then insert the node as the first node.
+    else if (position <= 0)
+    {
+        newNode->next = head;
+        head = newNode;
+    }
+    // Else if the 'position' is equal to or greater than
+    // the lenth of the list, then insert newNode as the
+    // first node.
+    else if (position >= maxPosition)
+    {
+        // Position nodePtr at the head of the list.
+        nodePtr = head;
+
+        // Search for the last node in the list.
+        while (nodePtr != nullptr)
+        {
+            previousNode = nodePtr;
+            nodePtr = nodePtr->next;
+        }
+
+        // Insert newNode there.
+        previousNode->next = newNode;
+        newNode->next = nullptr;
+    }
+    // Otherwise, store newNode at position.
+    else
+    {
+        // Position nodePtr at the head of the list.
+        nodePtr = head;
+
+        // Initialize previousNode to a null pointer.
+        previousNode = nullptr;
+
+        // A variable to keep track of position.
+        int index = 0;
+
+        // Skip all nodes whose index is less than the position.
+        while (nodePtr != nullptr && index < position)
+        {
+            previousNode = nodePtr;
+            nodePtr = nodePtr->next;
+            index = index + 1;
+        }
+
+        // Make the node after previousNode to be the new node.
+        previousNode->next = newNode;
+        // Make the node after newNode to be nodePtr.
+        newNode->next = nodePtr;
+    }
 }
